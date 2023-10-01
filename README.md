@@ -2,9 +2,9 @@
 
 ## Pre-requisites
 ### Set up Kafka and Flink
-Install Java 1.8 and adjust your PATH accordingly
-Install Maven and adjust your PATH accordingly
-Install docker and adjust your PATH accordingly
+Install Java 1.8 and adjust your PATH accordingly  
+Install Maven and adjust your PATH accordingly  
+Install docker and adjust your PATH accordingly  
 Clone the git repository https://github.com/dinbab1984/docker-compose  
 Start Kafka and  Flink as described in https://github.com/dinbab1984/docker-compose#readme\  
 Clone this git repository
