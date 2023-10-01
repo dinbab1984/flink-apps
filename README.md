@@ -17,10 +17,10 @@ Clone this git repository
 #### Create Output Topic:
 ````docker exec kafka kafka-topics --create --topic output-topic --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092````
 
-#### Compile and Build package using mvn
+### Compile and Build package using mvn
 ````mvn clean compile assembly:single````
 
-#### Submit the jar in target folder via Flink UI
+### Submit the jar in target folder via Flink UI
 http://localhost:8081/#/submit
 
 ### Test with sample messages
