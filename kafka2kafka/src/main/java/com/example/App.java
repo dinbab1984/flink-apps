@@ -5,8 +5,6 @@ package com.example;
  *
  */
 
-import java.util.Properties;
-
 //flink packages
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
@@ -25,28 +23,29 @@ public class App {
 	private static final Logger LOG = LoggerFactory.getLogger(App.class);
 	
 	public static void main(String[] args) {
-
+    //required properties
+    final String bootstrapServers = args.length > 0 ? args[0] : "localhost:29092";
+    final String consumerGroupId = "flink-consumer";
+    final String inputTopic = "input-topic";
+    final String outputTopic = "output-topic";
+    
 		//flink stream processor
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		Properties properties = new Properties();
-		properties.setProperty("bootstrap.servers", "kafka:9092");
-		properties.setProperty("group.id", "flink-consumer");
-		LOG.info("Properties set {}", properties);
       try{
         //Adding KafkaSource
         KafkaSource<String> source = KafkaSource.<String>builder()
-          .setBootstrapServers(properties.getProperty("bootstrap.servers", null))
-          .setTopics("input-topic")
-          .setGroupId(properties.getProperty("group.id", null))
+          .setBootstrapServers(bootstrapServers)
+          .setTopics(inputTopic)
+          .setGroupId(consumerGroupId)
           .setStartingOffsets(OffsetsInitializer.earliest())
           .setValueOnlyDeserializer(new SimpleStringSchema())
           .build();
         //Adding KafkaSink
         KafkaSink<String> sink = KafkaSink.<String>builder()
-          .setBootstrapServers(properties.getProperty("bootstrap.servers", null))
+          .setBootstrapServers(bootstrapServers)
           .setRecordSerializer(KafkaRecordSerializationSchema.builder()
-            .setTopic("output-topic")
+            .setTopic(outputTopic)
             .setValueSerializationSchema(new SimpleStringSchema())
             .build()
           )
@@ -57,12 +56,12 @@ public class App {
         //Publishing messages
         stream.sinkTo(sink);
         
-          
-	    env.execute("KafkaFlinkExampleApp");
+        env.execute("Kafka2KafkaApp");
+
         } catch (Exception e) 
         { 
-          System.out.println("Errors {}" + e);
-          LOG.info("Errors {}", e);
+          System.out.println("Errors {}" + e.fillInStackTrace().toString());
+          LOG.info("Errors {}" + e.fillInStackTrace().toString());
         } 
 	}
 
