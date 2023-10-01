@@ -1,11 +1,10 @@
 package com.example;
 
 /**
- * Kafka flink actico example!
+ * Kafka flink example!
  *
  */
 
-//import java.util.Objects;
 import java.util.Properties;
 
 //flink packages
@@ -21,8 +20,6 @@ import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//User defined packages
-//import realtime_examples.kafka_flink_actico.DataStreamMap;
 
 public class App {
 	private static final Logger LOG = LoggerFactory.getLogger(App.class);
