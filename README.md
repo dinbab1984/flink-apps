@@ -26,4 +26,4 @@ http://localhost:8081/#/submit
 ### Test with sample messages
 publish messages to input topic : ````docker exec -it kafka kafka-console-producer --topic input-topic --broker-list kafka:9092````
 
-consume messages from test topic : `````docker exec -it kafka kafka-console-consumer --topic output-topic --from-beginning --bootstrap-server kafka:9092````
+consume messages from test topic : ````docker exec -it kafka kafka-console-consumer --topic output-topic --from-beginning --bootstrap-server kafka:9092````
