@@ -44,7 +44,7 @@ we use the following api : Get User : http:localhost:8000/users/{id}
 ````docker exec kafka kafka-topics --create --topic output-topic-api --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092````
 
 ### Compile and Build package using mvn
-hint: current folder should : api_data_enrichment
+hint: current folder should be : api_data_enrichment
 ````mvn clean compile assembly:single```` 
 ### Submit the jar in target folder via Flink UI
 http://localhost:8081/#/submit (assign arguments as follows: kafka:9092 python_api:8000) 
