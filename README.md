@@ -18,7 +18,7 @@ Clone this git repository
 ````docker exec kafka kafka-topics --create --topic output-topic --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092````
 
 ### Compile and Build package using mvn
-hint: current folder should : kafka2kafka
+hint: current folder should be : kafka2kafka
 ````mvn clean compile assembly:single````
 
 ### Submit the jar in target folder via Flink UI
@@ -30,18 +30,13 @@ publish messages to input topic : ````docker exec -it kafka kafka-console-produc
 consume messages from output topic : ````docker exec -it kafka kafka-console-consumer --topic output-topic --from-beginning --bootstrap-server kafka:9092````
 
 ## Flink-App : APIDataEnrichmentApp with data enrichment via API
-````docker network create test-network````
-````docker network connect test-network python_api````
-````docker network connect test-network flink_taskmanager````
-
-C:\Users\dinba>docker network connect test-network docker-compose-taskmanager-1
-
 ### Setup API
 Follow the steps as described in https://github.com/dinbab1984/Python-API/blob/main/README.md  
 we use the following api : Get User : http:localhost:8000/users/{id}  
 ### Create docker test-network and connect both flink and python-api to it
-
-
+````docker network create test-network````  
+````docker network connect test-network python_api````  
+````docker network connect test-network flink_taskmanager````
 ### Setup for kafka topics
 #### Create Input Topic:
 ````docker exec kafka kafka-topics --create --topic input-topic-api --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092````
