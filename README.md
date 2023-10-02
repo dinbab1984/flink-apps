@@ -36,7 +36,7 @@ we use the following api : Get User : http://localhost:8000/users/{id}
 ### Create docker test-network and connect both flink and python-api to it
 Just in case if test-network already exists: ````docker network rm test-network````  
 ````docker network create test-network````  
-````docker network connect test-network python_api````  
+````docker network connect test-network pythonapi````  
 ````docker network connect test-network flink_taskmanager````
 ### Setup for kafka topics
 #### Create Input Topic:
@@ -48,7 +48,7 @@ Just in case if test-network already exists: ````docker network rm test-network`
 hint: current folder should be : api_data_enrichment
 ````mvn clean compile assembly:single```` 
 ### Submit the jar in target folder via Flink UI
-http://localhost:8081/#/submit (assign arguments as follows: kafka:9092 python_api:8000) 
+http://localhost:8081/#/submit (assign arguments as follows: kafka:9092 pythonapi:8000) 
 
 ### Test with sample messages
 publish messages to input topic : ````docker exec -it kafka kafka-console-producer --topic input-topic-api --broker-list kafka:9092````
