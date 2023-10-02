@@ -5,14 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>kafka2kafka</artifactId>
+  <artifactId>api_data_enrichment</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>kafka2kafka</name>
+  <name>api_data_enrichment</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
-  <properties>
+   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
@@ -43,7 +43,6 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      
     </dependency>
   </dependencies>
 
@@ -76,7 +75,7 @@
 				      <manifest>
 					      <addClasspath>true</addClasspath>
 					      <!-- here we specify that we want to use the main method within the App class -->
-					      <mainClass>com.example.App</mainClass>
+					      <mainClass>com.example.APIDataEnrichment</mainClass>
 				      </manifest>
 			        </archive>
 		      </configuration>
@@ -87,7 +86,7 @@
         <configuration>
             <archive>
             <manifest>
-                <mainClass>com.example.App</mainClass>
+                <mainClass>com.example.APIDataEnrichment</mainClass>
             </manifest>
             </archive>
             <descriptorRefs>
@@ -121,6 +120,13 @@
   
 
     <dependencies>
+
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-stdlib</artifactId>
+        <version>1.5.31</version>
+      </dependency>
+
 
       <dependency>
         <groupId>org.apache.flink</groupId>
