@@ -38,7 +38,7 @@ C:\Users\dinba>docker network connect test-network docker-compose-taskmanager-1
 
 ### Setup API
 Follow the steps as described in https://github.com/dinbab1984/Python-API/blob/main/README.md  
-we use the following api : Get User : http:localhost:8000/users/{id}
+we use the following api : Get User : http:localhost:8000/users/{id}  
 ### Create docker test-network and connect both flink and python-api to it
 
 
